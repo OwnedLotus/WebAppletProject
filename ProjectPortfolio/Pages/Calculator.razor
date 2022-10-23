@@ -2,63 +2,166 @@
 
 <h1>Calculator Application</h1>
 
-<input type="text" name="calculatorInput" class="input-group-text mb-4 mt-4">
+<input type="text" name="calculatorInput" class="input-group-text mb-4 mt-4" @bind="inputString">
 
-<div class="form-check">
+<form class="form-check">
      <div class="m-2" >
-          <button name="button1" class="btn btn-sm">
+          <button name="button1" class="btn btn-sm" @onclick="InsertOne">
                1
           </button>
-          <button name="button2" class="btn btn-sm">
+          <button name="button2" class="btn btn-sm" @onclick="InsertTwo">
                2
           </button>
-          <button name="button3" class="btn btn-sm">
+          <button name="button3" class="btn btn-sm" @onclick="InsertThree">
                3
           </button>
-          <button name="buttonPlus" class="btn btn-sm">
+          <button name="buttonPlus" class="btn btn-sm" @onclick="InsertAdd">
                +
           </button>
      </div>
      <div class="m-2">
-          <button name="button4" class="btn btn-sm">
+          <button name="button4" class="btn btn-sm" @onclick="InsertFour">
                4
           </button>
-          <button name="button5" class="btn btn-sm">
+          <button name="button5" class="btn btn-sm" @onclick="InsertFive">
                5
           </button>
-          <button name="button6" class="btn btn-sm">
+          <button name="button6" class="btn btn-sm" @onclick="InsertSix">
                6
           </button>
-          <button name="buttonMinus" class="btn btn-sm">
+          <button name="buttonMinus" class="btn btn-sm" @onclick="InsertMinus">
                -
           </button>
      </div>
      <div class="m-2">
-          <button name="button7" class="btn btn-sm">
+          <button name="button7" class="btn btn-sm" @onclick="InsertSeven">
                7
           </button>
-          <button name="button8" class="btn btn-sm">
+          <button name="button8" class="btn btn-sm" @onclick="InsertEight">
                8
           </button>
-          <button name="button9" class="btn btn-sm">
+          <button name="button9" class="btn btn-sm" @onclick="InsertNine">
                9
           </button>
-          <button name="buttonMult" class="btn btn-sm">
+          <button name="buttonMult" class="btn btn-sm" @onclick="InsertMult">
                *
           </button>
      </div>
      <div class="m-2 align-content-center">
           
           <span class="btn btn-sm"></span>
-          <button name="button0" class="btn btn-sm">
+          <button name="button0" class="btn btn-sm" @onclick="InsertZero">
                0
           </button>
           <span class="btn btn-sm"></span>
-          <button name="buttonDivi" class="btn btn-sm">
+          <button name="buttonDivi" class="btn btn-sm" @onclick="InsertDivi">
                /
           </button>
      </div>
-     <button name="buttonSubmit" class="btn btn-sm">
+     <button name="buttonSubmit" class="btn btn-sm" @onclick="SumbitEq">
           Submit
      </button>
-</div>
+</form>
+
+@code
+{    
+     char buttonSign = ' ';
+
+     int number1 = 0;
+     int number2 = 0;
+
+     string inputString = "";
+
+     private void InsertOne()
+     {
+          inputString += "1";
+     }
+     private void InsertTwo()
+     {
+          inputString += "2";
+     }
+     private void InsertThree()
+     {
+          inputString += "3";
+     }
+     private void InsertFour()
+     {
+          inputString += "4";
+     }
+     private void InsertFive()
+     {
+          inputString += "5";
+     }
+     private void InsertSix()
+     {
+          inputString += "6";
+     }
+     private void InsertSeven()
+     {
+          inputString += "7";
+     }
+     private void InsertEight()
+     {
+          inputString += "8";
+     }
+     private void InsertNine()
+     {
+          inputString += "9";
+     }
+     private void InsertZero()
+     {
+          inputString += "0";
+     }
+     private void InsertAdd()
+     {
+          number1 = Int32.Parse(inputString);
+          buttonSign = '+';
+     }
+     private void InsertMinus()
+     {
+          number1 = Int32.Parse(inputString);
+          buttonSign = '-';
+     }
+     private void InsertMult()
+     {
+          number1 = Int32.Parse(inputString);
+          buttonSign = '*';
+     }
+     private void InsertDivi()
+     {
+          number1 = Int32.Parse(inputString);
+          buttonSign = '/';
+     }
+     private void SumbitEq()
+     {
+          number2 = Int32.Parse(inputString);
+          
+          switch (buttonSign)
+          {
+               case '+':
+                    inputString = "";
+                    var total = number1 + number2;
+                    inputString = total.ToString();
+                    break;
+               case '-':
+                    inputString = "";
+                    var totalMin = number1 - number2;
+                    inputString = totalMin.ToString();
+                    break;
+               case '*':
+                    inputString = "";
+                    var totalMul = number1 * number2;
+                    inputString = totalMul.ToString();
+                    break;
+               case '/':
+                    inputString = "";
+                    var totalDiv = number1 / number2;
+                    inputString = totalDiv.ToString();
+                    break;
+
+               default:
+                    inputString = "Err";
+                    break;
+          }
+     }
+}
