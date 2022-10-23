@@ -1,0 +1,70 @@
+@page "/palindrome"
+
+<PageTitle>Palindrome Finder</PageTitle>
+<h1>Test if a word or sentence is a palindrome.</h1>
+
+<input type="text" @bind="inputTextValue">
+<button class="btn btn-primary" @onclick="UpdatePalindrome">Submit!</button>
+
+<form class="mt-1 mb-4">
+     <p>Click to ignore whitespace</p>
+     <input type="checkbox" @bind="ignoreWhiteSpace">
+</form>
+
+@if (isStringPalindrome)
+{
+     <p>Word or string is a palindrome.</p>
+}
+else
+{
+     <p>Word or string is not a palindrome.</p>
+}
+
+@code {
+     string inputTextValue = "";
+     string trimmedTextValue = "";
+     bool ignoreWhiteSpace = false;
+     bool isStringPalindrome = false;
+     
+     private void UpdatePalindrome()
+     {
+          trimmedTextValue = RemoveWhiteSpace(inputTextValue.Trim());
+
+          if (ignoreWhiteSpace)
+          {
+               isStringPalindrome = EvaluatePalendrome(trimmedTextValue);
+          }
+          else
+          {
+               isStringPalindrome = EvaluatePalendrome(trimmedTextValue);
+          }
+     }
+
+     private bool EvaluatePalendrome(string inputString)
+     {
+          char[] charArray = inputString.ToCharArray();
+          Array.Reverse(charArray);
+          string reversedString = new String(charArray);
+          return string.Equals(reversedString, inputString);
+     }
+
+
+     ///<summary>
+     ///This Function removes whitespace from a given input string
+     ///</summary>
+     private string RemoveWhiteSpace(string inputString)
+     {
+          string returnString = "";
+
+          for (int i = 0; i < inputString.Length; i++)
+          {
+               if (inputString[i] == ' ')
+               {
+                    inputString = inputString.Remove(i, 1);
+               }
+          }
+          returnString = inputString;
+
+          return returnString;
+     }
+}

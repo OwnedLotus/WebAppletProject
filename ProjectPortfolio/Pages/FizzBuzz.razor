@@ -1,0 +1,46 @@
+@page "/fizzbuzz"
+
+<PageTitle>FizzBuzz Web Application</PageTitle>
+<h1>Fizz Buzz Web Application</h1>
+
+<p>Please enter a value to reach.</p>
+
+<input type="number" class="form-check mb-3" name="numberEntry" @bind="rangeValue">
+
+<p>Select the value of Fizz and Buzz</p>
+<form class="form-group">
+     <label for="fizz">Fizz Number</label>
+     <input type="number" class="mb-3 form-check" name="fizzNum" id="fizz" @bind="fizzNum">
+     <label for="buzz">Buzz Number</label>
+     <input type="number" class="mb-3 form-check" name="buzzNum" id="buzz" @bind="buzzNum">
+</form>
+
+<div>
+     @for (int i = 1; i < rangeValue + 1; i++)
+     {
+          if (i % fizzNum == 0 && i % buzzNum == 0)
+          {
+               <p>@fb</p>
+               continue;
+          }
+          @if (i % fizzNum == 0)
+          {
+               <p>@fb.Substring(0,4)</p>
+               continue;
+          }
+          @if (i % buzzNum == 0)
+          {
+               <p>@fb.Substring(4,4)</p>
+               continue;
+          }
+          <p>@i</p>
+     }
+</div>
+
+@code {
+     int rangeValue = 1;
+     int fizzNum = 3;
+     int buzzNum = 5;
+
+     string fb = "FizzBuzz";
+}
