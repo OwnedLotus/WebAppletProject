@@ -1,0 +1,33 @@
+@page "/randompi"
+
+<PageTitle>Generate Pi Randomly</PageTitle>
+
+<h1>Pi Generator</h1>
+
+<p>This applet generates a random value of pi using a formula and two random floating point numbers.</p>
+
+
+<form class="form-check mt-3 mb-3">
+    <p>Check to use Rust language.</p>
+    <input type="checkbox" @bind="useRust">
+</form>
+
+<input type="number" @bind="iterateValue">
+<button class="btn btn-primary" name="submit" @onclick="CallGenerator">Submit!</button>
+
+@code
+{
+    private int iterateValue;
+    private bool useRust = false;
+
+    private void CallGenerator()
+    {
+        //todo!
+    }
+
+    //function will call a FFI from Rust that returns the value from a dll library yet to be implemented
+    private Exception CallRust()
+    {
+        return new NotImplementedException();
+    }
+}
