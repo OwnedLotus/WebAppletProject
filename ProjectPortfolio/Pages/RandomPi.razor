@@ -4,7 +4,7 @@
 
 <h1>Pi Generator</h1>
 
-<p>This applet generates a random value of pi using a formula and two random floating point numbers.</p>
+<p>This applet generates a random value of Pi using a formula and two random floating point numbers.</p>
 
 
 <form class="form-check mt-3 mb-3">
@@ -15,17 +15,25 @@
 <input type="number" @bind="iterateValue">
 <button class="btn btn-primary" name="submit" @onclick="CallGenerator">Submit!</button>
 
-<p>Generated Value: @resultValue</p>
+<div class="m-4">
+    <p>Generated Value : @resultValue</p>
+    <p>Accepted Value : @Math.PI</p>
+    <p>Percent Difference : @percentDifference%</p>
 
-<p>Execution Time: @resultTime</p>
+    <p>Execution Time: @resultTime</p>
+</div>
+
+
 
 @code
 {
     private int iterateValue;
     private bool useRust = false;
     private DateTime startTime;
-    private TimeSpan resultTime;
-    private float resultValue;
+    private static TimeSpan resultTime;
+    private static double resultValue;
+
+    private static double percentDifference;
 
     private void CallGenerator()
     {
@@ -40,13 +48,13 @@
             resultValue = GeneratePi(iterateValue);
         }
 
-        resultTime = startTime - DateTime.Now;
+        resultTime = DateTime.Now - startTime;
         
-        //todo!
+        percentDifference = ((resultValue - Math.PI) / (resultValue + Math.PI) ) * 100;
     }
 
 
-    float GeneratePi(int num)
+    double GeneratePi(int num)
     {
         Random rng = new Random();
         int pointTotal = 0;
@@ -58,16 +66,15 @@
             float dist = arrow.Length();
 
             if (dist <= 1f)
-            {
                 pointCircle++;
-            }
+                
             pointTotal++;
         }
 
-        return 4f * ((float) pointCircle / (float) pointTotal);
+        return 4f * ((double) pointCircle / (double) pointTotal);
     }
 
     //function will call a FFI from Rust that returns the value from a dll library yet to be implemented
     [System.Runtime.InteropServices.DllImport("txt.txt")]//Need to Implement Function
-    private static extern float GeneratePiRust(int iterateValue);
+    private static extern double GeneratePiRust(int iterateValue);
 }
