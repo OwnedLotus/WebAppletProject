@@ -8,12 +8,13 @@
 
 
 <form class="form-check mt-3 mb-3">
-    <p>Check to use Rust language.</p>
-    <input type="checkbox" @bind="useRust">
+    <p>Check to use TypeScript.</p>
+    <input type="checkbox" @bind="useTS">
 </form>
 
 <input type="number" @bind="iterateValue">
 <button class="btn btn-primary" name="submit" @onclick="CallGenerator">Submit!</button>
+<button class="btn btn-primary" name="rust" @onclick="lib_test"></button>
 
 <div class="m-4">
     <p>Generated Value : @resultValue</p>
@@ -28,7 +29,7 @@
 @code
 {
     private int iterateValue;
-    private bool useRust = false;
+    private bool useTS = false;
     private DateTime startTime;
     private static TimeSpan resultTime;
     private static double resultValue;
@@ -39,7 +40,7 @@
     {
         startTime = DateTime.Now;
 
-        if (useRust)
+        if (useTS)
         {
             resultValue = GeneratePiRust(iterateValue);
         }
@@ -73,8 +74,4 @@
 
         return 4f * ((double) pointCircle / (double) pointTotal);
     }
-
-    //function will call a FFI from Rust that returns the value from a dll library yet to be implemented
-    [System.Runtime.InteropServices.DllImport("txt.txt")]//Need to Implement Function
-    private static extern double GeneratePiRust(int iterateValue);
 }

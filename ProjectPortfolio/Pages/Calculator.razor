@@ -13,59 +13,59 @@
 
 <form class="form-check">
      <div class="m-2" >
-          <button name="button1" class="btn btn-sm" @onclick="InsertOne">
+          <button name="button1" class="btn btn-sm" data-number>
                1
           </button>
-          <button name="button2" class="btn btn-sm" @onclick="InsertTwo">
+          <button name="button2" class="btn btn-sm" data-number>
                2
           </button>
-          <button name="button3" class="btn btn-sm" @onclick="InsertThree">
+          <button name="button3" class="btn btn-sm" data-number>
                3
           </button>
-          <button name="buttonPlus" class="btn btn-sm" @onclick="InsertAdd">
+          <button name="buttonPlus" class="btn btn-sm" data-operation>
                +
           </button>
      </div>
      <div class="m-2">
-          <button name="button4" class="btn btn-sm" @onclick="InsertFour">
+          <button name="button4" class="btn btn-sm" data-number>
                4
           </button>
-          <button name="button5" class="btn btn-sm" @onclick="InsertFive">
+          <button name="button5" class="btn btn-sm" data-number>
                5
           </button>
-          <button name="button6" class="btn btn-sm" @onclick="InsertSix">
+          <button name="button6" class="btn btn-sm" data-number>
                6
           </button>
-          <button name="buttonMinus" class="btn btn-sm" @onclick="InsertMinus">
+          <button name="buttonMinus" class="btn btn-sm" data-operation>
                -
           </button>
      </div>
      <div class="m-2">
-          <button name="button7" class="btn btn-sm" @onclick="InsertSeven">
+          <button name="button7" class="btn btn-sm" data-number>
                7
           </button>
-          <button name="button8" class="btn btn-sm" @onclick="InsertEight">
+          <button name="button8" class="btn btn-sm" data-number>
                8
           </button>
-          <button name="button9" class="btn btn-sm" @onclick="InsertNine">
+          <button name="button9" class="btn btn-sm" data-number>
                9
           </button>
-          <button name="buttonMult" class="btn btn-sm" @onclick="InsertMult">
+          <button name="buttonMult" class="btn btn-sm" data-operation>
                *
           </button>
      </div>
      <div class="m-2 align-content-center">
           
           <span class="btn btn-sm"></span>
-          <button name="button0" class="btn btn-sm" @onclick="InsertZero">
+          <button name="button0" class="btn btn-sm" data-number>
                0
           </button>
           <span class="btn btn-sm"></span>
-          <button name="buttonDivi" class="btn btn-sm" @onclick="InsertDivi">
+          <button name="buttonDivi" class="btn btn-sm" data-operation>
                /
           </button>
      </div>
-     <button name="buttonSubmit" class="btn btn-sm" @onclick="SumbitEq">
+     <button name="buttonSubmit" class="btn btn-sm" >
           Submit
      </button>
 </form>
@@ -79,46 +79,7 @@
 
      string inputString = "";
 
-     private void InsertOne()
-     {
-          inputString += "1";
-     }
-     private void InsertTwo()
-     {
-          inputString += "2";
-     }
-     private void InsertThree()
-     {
-          inputString += "3";
-     }
-     private void InsertFour()
-     {
-          inputString += "4";
-     }
-     private void InsertFive()
-     {
-          inputString += "5";
-     }
-     private void InsertSix()
-     {
-          inputString += "6";
-     }
-     private void InsertSeven()
-     {
-          inputString += "7";
-     }
-     private void InsertEight()
-     {
-          inputString += "8";
-     }
-     private void InsertNine()
-     {
-          inputString += "9";
-     }
-     private void InsertZero()
-     {
-          inputString += "0";
-     }
+     
      private void InsertAdd()
      {
           number1 = Int32.Parse(inputString);
