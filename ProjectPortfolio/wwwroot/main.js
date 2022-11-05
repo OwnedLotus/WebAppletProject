@@ -38,4 +38,18 @@ function InsertNine() {
 function InsertZero() {
     inputString += "0";
 }
+function GeneratePi(iterator) {
+    var inCircle = 0;
+    var totalCircle = 0;
+    for (var index = 0; index < iterator; index++) {
+        var firstNum = Math.random();
+        var secondNum = Math.random();
+        var dist = Math.sqrt(Math.pow(firstNum, 2) + Math.pow(secondNum, 2));
+        if (dist >= 1) {
+            inCircle++;
+        }
+        totalCircle++;
+    }
+    return 4 * (inCircle / totalCircle);
+}
 //# sourceMappingURL=main.js.map

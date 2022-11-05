@@ -14,7 +14,6 @@
 
 <input type="number" @bind="iterateValue">
 <button class="btn btn-primary" name="submit" @onclick="CallGenerator">Submit!</button>
-<button class="btn btn-primary" name="rust" @onclick="lib_test"></button>
 
 <div class="m-4">
     <p>Generated Value : @resultValue</p>
@@ -42,7 +41,7 @@
 
         if (useTS)
         {
-            resultValue = GeneratePiRust(iterateValue);
+            
         }
         else
         {
