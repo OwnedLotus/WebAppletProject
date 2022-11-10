@@ -3,11 +3,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var inputString = "";
 var numberButton = document.querySelectorAll('[data-number]');
 var operationButtons = document.querySelectorAll('[data-operation]');
-var equalsButton = document.querySelector('[data-equals');
-var deleteButton = document.querySelector('[data-delete');
-var allClearButton = document.querySelector('[data-all-clear');
+var equalsButton = document.querySelector('[data-equals]');
+var deleteButton = document.querySelector('[data-delete]');
+var allClearButton = document.querySelector('[data-all-clear]');
 var previousOperandTextElement = document.querySelector('[data-pervious-operand]');
-var currentOperandTextElement = document.querySelector('[data-current-operand');
+var currentOperandTextElement = document.querySelector('[data-current-operand]');
 function InsertOne() {
     inputString += "1";
 }
