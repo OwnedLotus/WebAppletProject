@@ -1,5 +1,10 @@
 export { };
 
+new ClipboardJS()
+
+
+
+
 let inputString: string = "";
 
 const numberButton = document.querySelectorAll('[data-number]');
