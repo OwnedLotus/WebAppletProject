@@ -16,12 +16,12 @@ jobs:
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v2
         with:
-          dotnet-version: 7.0.1
+          dotnet-version: 6.0.10
 
       # Publish the site
       - name: Publish
-        #      Don't missing to add "p:GHPages=true". 👇
-        run: dotnet publish ProjectDir/Project.csproj -p:GHPages=true -o:public -c:Release
+        
+        run: dotnet publish /ProjectPortfolio/ProjectPortfolio -c Release --output build 
 
       # Deploy the site
       - name: Deploy
